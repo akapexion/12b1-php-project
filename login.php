@@ -10,14 +10,23 @@
 
         $count_users = mysqli_num_rows($execute);
         // echo $count_users;
+        $getData = mysqli_fetch_array($execute);
         if($count_users > 0){
+
+            $_SESSION['fName'] = $getData['user_fname'];
+            $_SESSION['lName'] = $getData['user_lname'];
+            $_SESSION['email'] = $getData['user_email'];
+            $_SESSION['role'] = $getData['user_role'];
+
             echo "<script>
                 alert('Login Successful');
+                location.assign('index.php');
             </script>";
         }
         else {
             echo "<script>
                 alert('Incorrect Credentials');
+                location.assign('login.php');
             </script>";
         }
     }
