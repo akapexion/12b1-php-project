@@ -1,11 +1,5 @@
                 <?php
                     include("base/header.php");
-
-                    if(!isset($_SESSION['email'])){
-                        echo "<script>
-                            location.assign('login.php');
-                        </script>";
-                    }
                 ?>
 
                 <!-- Begin Page Content -->

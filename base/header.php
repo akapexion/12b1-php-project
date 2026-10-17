@@ -1,5 +1,5 @@
 <?php
-    include("config/db.php");
+    include("protected_route.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,6 +16,7 @@
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css" integrity="sha512-kJlvECunwXftkPwyvHbclArO8wszgBGisiLeuDFwNM8ws+wKIw0sv1os3ClWZOcrEB2eRXULYUsm8OVRGJKwGA==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
@@ -87,7 +88,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Products Module:</h6>
                         <a class="collapse-item" href="add_product.php">Add Product</a>
-                        <a class="collapse-item" href="utilities-border.html">View Products</a>
+                        <a class="collapse-item" href="view_products.php">View Products</a>
                     </div>
                 </div>
             </li>
