@@ -18,10 +18,19 @@
             $_SESSION['email'] = $getData['user_email'];
             $_SESSION['role'] = $getData['user_role'];
 
+            if($getData['user_role'] == "admin"){
+
             echo "<script>
                 alert('Login Successful');
                 location.assign('index.php');
             </script>";
+            }
+            else {
+                 echo "<script>
+                alert('Login Successful');
+                location.assign('../index.php');
+            </script>";
+            }
         }
         else {
             echo "<script>
