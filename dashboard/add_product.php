@@ -1,12 +1,27 @@
 <?php
 include("base/header.php");
 
-if(isset($_POST['addproduct'])){
+if (isset($_POST['addproduct'])) {
     extract($_POST);
 
-    $insert_query = "INSERT INTO products(product_name, product_price, product_stock, product_detail, product_image, product_category) VALUES('$name', $price, $stock, '$detail', '$image', '$category')";
+    $image = $_FILES["image"]["name"]; //file name
+    $tmpImage = $_FILES["image"]["tmp_name"];  // file/save on temporary location.
 
-    $result = mysqli_query($conn, $insert_query);
+    $destination = "uploads/" . $image;  // file path
+    $extension = pathinfo($image, PATHINFO_EXTENSION);  // extension info
+
+    if ($extension == "png" || $extension == "jpg" || $extension == "jpeg") {
+        if (move_uploaded_file($tmpImage, $destination)) {
+            $insert_query = "INSERT INTO products(product_name, product_price, product_stock, product_detail, product_image, product_category) VALUES('$name', $price, $stock, '$detail', '$image', '$category')";
+
+            $result = mysqli_query($conn, $insert_query);
+        } else {
+            echo "Error";
+        }
+    }
+    else {
+        echo "File Format Not Supported";
+    }
 }
 
 ?>
@@ -14,7 +29,7 @@ if(isset($_POST['addproduct'])){
 <div class="container-fluid">
     <h1>Add Product</h1>
 
-    <form method="POST">
+    <form method="POST" enctype="multipart/form-data">
         <label for="exampleFormControlInput" class="form-label mb-2">Product Name</label>
         <input type="text" class="form-control" name="name">
 
